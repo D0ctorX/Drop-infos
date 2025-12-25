@@ -38,6 +38,7 @@
         .cta-btn {
             background-color: var(--highlight-color); color: white; padding: 10px 20px;
             border-radius: 20px; text-decoration: none; font-weight: 600; transition: transform 0.2s;
+            border: none; cursor: pointer;
         }
         .cta-btn:hover { transform: scale(1.05); }
 
@@ -86,17 +87,18 @@
 
         /* --- FOOTER --- */
         footer { padding: 40px 5%; text-align: center; color: var(--secondary-text); font-size: 14px; border-top: 1px solid var(--border-color); }
-        .socials { margin-bottom: 20px; }
-        .socials a { color: var(--text-color); margin: 0 10px; font-size: 20px; transition: color 0.2s; }
-        .socials a:hover { color: var(--highlight-color); }
+        #admin-link { display: none; color: #ccc; text-decoration: none; margin-top: 20px; display: inline-block; font-size: 10px; }
 
-        /* --- RESPONSIVE --- */
+        /* --- FEEDBACK FORM --- */
+        .feedback-form { max-width: 500px; margin: 0 auto; display: flex; flex-direction: column; gap: 15px; }
+        .feedback-input { padding: 12px; border: 1px solid var(--border-color); border-radius: 8px; font-family: 'Inter'; }
+        
         @media (max-width: 768px) {
             h1 { font-size: 36px; }
-            .nav-links { display: none; } /* Mobile menu simplified */
+            .nav-links { display: none; }
             nav { justify-content: center; }
             .logo { position: absolute; left: 20px; }
-            .cta-btn { position: absolute; right: 20px; }
+            .cta-btn-nav { position: absolute; right: 20px; }
         }
     </style>
 </head>
@@ -108,85 +110,33 @@
             <a href="#devlog">Devlog</a>
             <a href="#tutos">Tutoriels</a>
             <a href="#legal">Légal</a>
-            <a href="#feedback">Feedback</a>
         </div>
-        <a href="https://drop-24.netlify.app" class="cta-btn">Rejoindre Drop</a>
+        <a href="https://drop-24.netlify.app" class="cta-btn cta-btn-nav" target="_blank">Rejoindre Drop</a>
     </nav>
 
     <header>
         <h1>L'Univers Drop</h1>
         <p class="hero-sub">Tout ce que vous devez savoir sur votre réseau social préféré. Mises à jour, astuces de sécurité et transparence totale.</p>
         <div style="display:flex; gap:15px; justify-content:center;">
-            <a href="https://drop-24.netlify.app" class="cta-btn" style="padding:15px 30px; font-size:16px;">Lancer l'App</a>
+            <a href="https://drop-24.netlify.app" class="cta-btn" style="padding:15px 30px; font-size:16px;" target="_blank">Lancer l'App</a>
             <a href="#tutos" style="padding:15px 30px; background:white; border:1px solid #DBDBDB; border-radius:20px; text-decoration:none; color:#333; font-weight:600;">Découvrir</a>
         </div>
     </header>
 
-    <!-- DEVLOG -->
+    <!-- DEVLOG (Dynamique) -->
     <section id="devlog">
         <div class="section-title">Devlog & Roadmap</div>
-        <p class="section-desc">Suivez l'évolution du développement de Drop. Nous construisons cette plateforme avec vous.</p>
-        
-        <div class="timeline">
-            <!-- Item 2 -->
-            <div class="timeline-item">
-                <div class="timeline-dot"></div>
-                <div class="timeline-content">
-                    <span class="version-tag">Bientôt (v1.3)</span>
-                    <h3>Les "Cercles" et la Modération IA</h3>
-                    <p>Nous travaillons sur l'intégration d'une IA pour sécuriser les échanges et sur la fonctionnalité "Cercles" pour mieux gérer vos groupes d'amis.</p>
-                </div>
-            </div>
-            
-            <!-- Item 1 -->
-            <div class="timeline-item">
-                <div class="timeline-dot" style="background:#ccc;"></div>
-                <div class="timeline-content">
-                    <span class="version-tag" style="background:#f3f4f6; color:#374151;">v1.2.0 - Actuel</span> <span class="update-date">24 Déc 2024</span>
-                    <h3>Mode Sombre & Optimisations</h3>
-                    <ul>
-                        <li>Ajout des QR Codes pour ajouter des amis facilement.</li>
-                        <li>Possibilité de recadrer les images avant publication.</li>
-                        <li>Correction du bug de défilement sur iOS.</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-dot" style="background:#ccc;"></div>
-                <div class="timeline-content">
-                    <span class="version-tag" style="background:#f3f4f6; color:#374151;">v1.0.0</span> <span class="update-date">01 Déc 2024</span>
-                    <h3>Lancement Officiel</h3>
-                    <p>Ouverture de la plateforme au public. Fonctionnalités de base : Posts éphémères, Chat privé, Groupes.</p>
-                </div>
-            </div>
+        <p class="section-desc">Suivez l'évolution du développement de Drop.</p>
+        <div class="timeline" id="roadmap-container">
+            <p style="text-align:center;">Chargement de la roadmap...</p>
         </div>
     </section>
 
-    <!-- TUTORIELS / FORUM -->
+    <!-- TUTORIELS (Dynamique) -->
     <section id="tutos" style="background: var(--section-bg);">
         <div class="section-title">Centre d'Aide & Tutoriels</div>
-        <div class="grid-container">
-            <div class="card">
-                <i class="fas fa-qrcode card-icon"></i>
-                <h3>Le système QR Code</h3>
-                <p>Apprenez comment partager votre profil en un instant lors de soirées ou d'événements grâce à votre QR Code unique.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-user-secret card-icon"></i>
-                <h3>Rester Anonyme</h3>
-                <p>Comment utiliser le mode "Anonyme" sur vos publications sans compromettre la sécurité de votre compte.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-magic card-icon"></i>
-                <h3>Créer son premier Drop</h3>
-                <p>Le guide complet pour maîtriser l'éditeur, ajouter des fonds colorés et utiliser les stickers.</p>
-            </div>
-            <div class="card">
-                <i class="fas fa-shield-alt card-icon"></i>
-                <h3>Signaler un contenu</h3>
-                <p>La procédure à suivre si vous tombez sur un contenu inapproprié ou du harcèlement.</p>
-            </div>
+        <div class="grid-container" id="tutos-container">
+            <p style="text-align:center; width:100%;">Chargement des tutoriels...</p>
         </div>
     </section>
 
@@ -198,9 +148,9 @@
             <h3><i class="fas fa-lock"></i> Politique de Confidentialité (RGPD)</h3>
             <div class="legal-content" id="rgpd-content">
                 <p>Chez Drop, nous prenons votre vie privée au sérieux. Voici comment nous gérons vos données :</p>
-                <p><strong>1. Stockage des Données :</strong> Vos messages et posts sont stockés sur Google Firebase (Firestore), des serveurs sécurisés en Europe/US. </p>
-                <p><strong>2. Éphémère :</strong> Nos algorithmes suppriment automatiquement les posts publics après 24h. Cependant, gardez à l'esprit que des captures d'écran sont toujours possibles par des tiers.</p>
-                <p><strong>3. Vos Droits :</strong> Conformément au RGPD, vous pouvez demander la suppression intégrale de votre compte et de vos données en nous contactant à privacy@drop.com.</p>
+                <p><strong>1. Stockage des Données :</strong> Vos messages et posts sont stockés sur Google Firebase (Firestore).</p>
+                <p><strong>2. Éphémère :</strong> Nos algorithmes suppriment automatiquement les posts publics après 24h.</p>
+                <p><strong>3. Vos Droits :</strong> Conformément au RGPD, vous pouvez demander la suppression intégrale de vos données.</p>
             </div>
             <button class="read-more-btn" onclick="toggleLegal('rgpd-content')">Lire tout</button>
         </div>
@@ -212,9 +162,8 @@
                 <ul>
                     <li>Pas de harcèlement, de discours haineux ou de contenu illégal.</li>
                     <li>Respect de l'anonymat des autres utilisateurs.</li>
-                    <li>Vous devez avoir au moins 13 ans pour utiliser l'application.</li>
                 </ul>
-                <p>Tout manquement entraînera un bannissement définitif de votre identifiant matériel et IP.</p>
+                <p>Tout manquement entraînera un bannissement définitif.</p>
             </div>
             <button class="read-more-btn" onclick="toggleLegal('cgu-content')">Lire tout</button>
         </div>
@@ -224,26 +173,112 @@
     <section id="feedback" style="background:white; text-align:center;">
         <div class="section-title">Votre avis compte</div>
         <p style="max-width:600px; margin:0 auto 30px;">Une idée de fonctionnalité ? Un bug repéré ? Dites-le nous.</p>
-        <a href="mailto:feedback@drop.com" class="cta-btn" style="background:#333;">Envoyer un Feedback</a>
+        <div class="feedback-form">
+            <input type="email" id="fb-email" class="feedback-input" placeholder="Votre email (optionnel)">
+            <textarea id="fb-message" class="feedback-input" rows="4" placeholder="Votre message..."></textarea>
+            <button id="fb-send-btn" class="cta-btn" style="background:#333;">Envoyer le Feedback</button>
+        </div>
     </section>
 
     <footer>
-        <div class="socials">
-            <a href="#"><i class="fab fa-twitter"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-discord"></i></a>
-        </div>
         <p>&copy; 2024 Drop Social Network. Tous droits réservés.</p>
         <p style="font-size:12px; color:#ccc;">Fait avec <i class="fas fa-heart" style="color:red;"></i> pour la communauté.</p>
     </footer>
 
-    <script>
-        function toggleLegal(id) {
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, addDoc, collection, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        const appId = '1:541715107757:web:0141b71ee3cd1ce5ec5b24';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
+             apiKey: "AIzaSyB_z5U4yKJERho93p9696NujcG5R5fvlD8",
+             authDomain: "studio-3374032724-f28d6.firebaseapp.com",
+             projectId: "studio-3374032724-f28d6",
+             appId: appId
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
+        const auth = getAuth(app);
+        const dbPath = `artifacts/${appId}/public/data`;
+        const cmsDocRef = doc(db, dbPath, 'cms', 'config');
+        const feedbacksRef = collection(db, dbPath, 'feedbacks');
+        const usersRef = collection(db, dbPath, 'users');
+
+        // Load Dynamic Content
+        async function loadContent() {
+            try {
+                const docSnap = await getDoc(cmsDocRef);
+                if(docSnap.exists()) {
+                    const data = docSnap.data();
+                    renderRoadmap(data.roadmap || []);
+                    renderTutos(data.tutos || []);
+                } else {
+                    // Fallback default
+                     renderRoadmap([{version:'v1.0', title:'Lancement', desc:'Drop est en ligne.'}]);
+                     renderTutos([{title:'Bienvenue', desc:'Consultez nos guides.'}]);
+                }
+            } catch(e) {
+                console.error("Erreur chargement", e);
+            }
+        }
+
+        function renderRoadmap(items) {
+            const container = document.getElementById('roadmap-container');
+            container.innerHTML = '';
+            items.forEach(item => {
+                container.innerHTML += `
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <span class="version-tag">${item.version}</span>
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                </div>`;
+            });
+        }
+
+        function renderTutos(items) {
+             const container = document.getElementById('tutos-container');
+             container.innerHTML = '';
+             items.forEach(item => {
+                 container.innerHTML += `
+                    <div class="card">
+                        <i class="fas fa-lightbulb card-icon"></i>
+                        <h3>${item.title}</h3>
+                        <p>${item.desc}</p>
+                    </div>
+                 `;
+             });
+        }
+
+        // Send Feedback
+        document.getElementById('fb-send-btn').onclick = async () => {
+            const email = document.getElementById('fb-email').value;
+            const msg = document.getElementById('fb-message').value;
+            if(!msg) return alert("Message vide !");
+            
+            try {
+                await addDoc(feedbacksRef, {
+                    email: email,
+                    message: msg,
+                    createdAt: serverTimestamp()
+                });
+                alert("Feedback envoyé ! Merci.");
+                document.getElementById('fb-message').value = '';
+            } catch(e) { alert("Erreur envoi."); }
+        };
+
+        window.toggleLegal = (id) => {
             const el = document.getElementById(id);
             el.classList.toggle('expanded');
-            const btn = el.nextElementSibling;
-            btn.textContent = el.classList.contains('expanded') ? 'Réduire' : 'Lire tout';
-        }
+            el.nextElementSibling.textContent = el.classList.contains('expanded') ? 'Réduire' : 'Lire tout';
+        };
+
+        loadContent();
+
     </script>
 </body>
 </html>
