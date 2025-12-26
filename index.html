@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Toutes les infos sur Drop : Mises à jour, Tutoriels, Confidentialité et Communauté.">
+    <meta name="description" content="Toutes les infos sur Drop : Mises à jour, Confidentialité et Communauté.">
     <title>Drop Infos | Le Portail Communautaire</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -67,17 +67,6 @@
         .timeline-content ul { padding-left: 20px; color: #4B5563; }
         .timeline-content li { margin-bottom: 5px; }
 
-        /* --- TUTOS CARDS --- */
-        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; max-width: 1200px; margin: 0 auto; }
-        .card {
-            background: white; border: 1px solid var(--border-color); border-radius: 12px;
-            padding: 30px; transition: box-shadow 0.2s; cursor: pointer;
-        }
-        .card:hover { box-shadow: 0 10px 25px rgba(0,0,0,0.05); border-color: var(--highlight-color); }
-        .card-icon { font-size: 32px; color: var(--highlight-color); margin-bottom: 20px; }
-        .card h3 { margin: 0 0 10px; }
-        .card p { color: var(--secondary-text); font-size: 14px; line-height: 1.5; }
-
         /* --- LEGAL --- */
         .legal-block { background: var(--section-bg); padding: 40px; border-radius: 12px; margin-bottom: 20px; max-width: 900px; margin-left: auto; margin-right: auto; }
         .legal-block h3 { margin-top: 0; }
@@ -108,7 +97,6 @@
         <a href="#" class="logo">Drop Infos</a>
         <div class="nav-links">
             <a href="#devlog">Devlog</a>
-            <a href="#tutos">Tutoriels</a>
             <a href="#legal">Légal</a>
         </div>
         <a href="https://drop-24.netlify.app" class="cta-btn cta-btn-nav" target="_blank">Rejoindre Drop</a>
@@ -119,7 +107,6 @@
         <p class="hero-sub">Tout ce que vous devez savoir sur votre réseau social préféré. Mises à jour, astuces de sécurité et transparence totale.</p>
         <div style="display:flex; gap:15px; justify-content:center;">
             <a href="https://drop-24.netlify.app" class="cta-btn" style="padding:15px 30px; font-size:16px;" target="_blank">Lancer l'App</a>
-            <a href="#tutos" style="padding:15px 30px; background:white; border:1px solid #DBDBDB; border-radius:20px; text-decoration:none; color:#333; font-weight:600;">Découvrir</a>
         </div>
     </header>
 
@@ -129,14 +116,6 @@
         <p class="section-desc">Suivez l'évolution du développement de Drop.</p>
         <div class="timeline" id="roadmap-container">
             <p style="text-align:center;">Chargement de la roadmap...</p>
-        </div>
-    </section>
-
-    <!-- TUTORIELS (Dynamique) -->
-    <section id="tutos" style="background: var(--section-bg);">
-        <div class="section-title">Centre d'Aide & Tutoriels</div>
-        <div class="grid-container" id="tutos-container">
-            <p style="text-align:center; width:100%;">Chargement des tutoriels...</p>
         </div>
     </section>
 
@@ -213,11 +192,9 @@
                 if(docSnap.exists()) {
                     const data = docSnap.data();
                     renderRoadmap(data.roadmap || []);
-                    renderTutos(data.tutos || []);
                 } else {
                     // Fallback default
                      renderRoadmap([{version:'v1.0', title:'Lancement', desc:'Drop est en ligne.'}]);
-                     renderTutos([{title:'Bienvenue', desc:'Consultez nos guides.'}]);
                 }
             } catch(e) {
                 console.error("Erreur chargement", e);
@@ -238,20 +215,6 @@
                     </div>
                 </div>`;
             });
-        }
-
-        function renderTutos(items) {
-             const container = document.getElementById('tutos-container');
-             container.innerHTML = '';
-             items.forEach(item => {
-                 container.innerHTML += `
-                    <div class="card">
-                        <i class="fas fa-lightbulb card-icon"></i>
-                        <h3>${item.title}</h3>
-                        <p>${item.desc}</p>
-                    </div>
-                 `;
-             });
         }
 
         // Send Feedback
